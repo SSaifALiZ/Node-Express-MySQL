@@ -1,7 +1,6 @@
 import express from "express";
 import cookieParser from "cookie-parser";
 import multer from "multer";
-// import { initializeApp } from "firebase-admin/app";
 import admin from "firebase-admin";
 
 import authRoutes from "./routes/auth.js";
@@ -9,13 +8,6 @@ import userRoutes from "./routes/users.js";
 import postRoutes from "./routes/posts.js";
 import listingRoutes from "./routes/listings.js";
 import credentials from "./credentials.json" assert { type: "json" };
-// import { credential } from "firebase-admin";
-
-// const admin = require("firebase-admin");
-
-// initializeApp(credentials);
-
-// initializeApp({ credential: credential?.cert(credentials) });
 
 admin.initializeApp({
   credential: admin.credential.cert(credentials),
@@ -42,9 +34,5 @@ app?.use("/api/auth", authRoutes);
 app?.use("/api/users", userRoutes);
 app?.use("/api/posts", postRoutes);
 app?.use("/api/listings", listingRoutes);
-
-// app?.get("/test", (req, res) => {
-//   res?.json("It works!!!");
-// });
 
 app?.listen(8800, () => console.log("Connected...!!!!"));
